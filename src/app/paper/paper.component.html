@@ -1,0 +1,19 @@
+<div *ngIf="paper" class="mb-3 pl-1 paper" >
+  <h5 class="paper-title mb-3" (click)="isCollapsed = !isCollapsed"><em>{{paper.title}}</em> ({{paper.publicationDate | date:'yyyy'}})</h5>
+  <button type="button" class="btn btn-sm btn-secondary btn-collapse" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+    <fa-icon *ngIf="!isCollapsed" [icon]="['fas', 'minus']"></fa-icon>
+    <fa-icon *ngIf="isCollapsed" [icon]="['fas', 'plus']"></fa-icon>
+  </button>
+  <div class="paper-body" [ngbCollapse]="isCollapsed">
+    <div class="col-md-4 offset-md-4 text-center">
+      <h6 class="mb-0">Paper credibility</h6>
+      <p class="text-muted small mb-0"><em>Proposed by {{paper.createdBy | userName | async }} on {{paper.creationDate | date}}</em></p>
+      <app-cursor [cursor]="paper.cursor" [cursor]="paper.status"></app-cursor>
+    </div>
+    <p class="small">Authors: <span *ngFor="let author of paper.authors; last as isLast">{{author}}<span *ngIf="!isLast">, </span></span><br>
+      Published in {{paper.publishedIn}}</p>
+    <p>{{paper.abstract}}<br>
+      <a href="{{paper.link}}" target="_blank">Read full article <fa-icon [icon]="['fas', 'external-link-alt']" size="xs"></fa-icon></a></p>
+    <app-paper-rating *ngFor="let id of paper.ratings; first as isFirst; last as isLast" [ratingId]="id" [isFirst]="isFirst" [isLast]="isLast"></app-paper-rating>
+  </div>
+</div>

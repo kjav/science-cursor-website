@@ -1,0 +1,2 @@
+<app-paper *ngFor="let id of papers" [paperId]="id"></app-paper>
+<div *ngIf="papers.length == 0" class="alert alert-info">No paper listed, you can add one to increase people knowledge of thesis</div>

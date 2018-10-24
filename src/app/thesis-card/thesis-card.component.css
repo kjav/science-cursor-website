@@ -1,0 +1,16 @@
+.thesis-card {
+  background-color: #ffffff;
+}
+
+.thesis-card h5 {
+  position: relative;
+  height: 50px;
+  line-height: 25px;
+  overflow-y: hidden;
+}
+
+.thesis-card .alert {
+  position: absolute;
+  z-index: 99;
+  opacity: 0.95;
+}

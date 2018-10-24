@@ -1,0 +1,4 @@
+<div class="cursor-container text-center">
+  <p class="cursor-value">{{cursor | cursorValue:status}}</p>
+  <chart class="card-img-top p-2" [type]="cursorConf.type" [data]="cursorConf.data" [options]="cursorConf.options"></chart>
+</div>

@@ -1,0 +1,7 @@
+.rating {
+  border-bottom: 1px solid #dddddd;
+}
+
+.rating.last {
+  border-bottom: none;
+}

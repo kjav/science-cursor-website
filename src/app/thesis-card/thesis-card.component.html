@@ -1,0 +1,14 @@
+<div class="card thesis-card my-3">
+  <div *ngIf="thesis.status === 1" class="alert alert-warning m-2" role="alert">
+    The thesis has received some warnings and should be ignored.
+  </div>
+  <div *ngIf="thesis.status === 2" class="alert alert-danger m-2" role="alert">
+    The thesis has been blocked due to offensive content.
+  </div>
+  <app-cursor [cursor]="thesis.cursor" [status]="thesis.status"></app-cursor>
+  <div class="card-body">
+    <h5 *ngIf="thesis.status !== 2" class="card-title">{{thesis.title}}</h5>
+    <h5 *ngIf="thesis.status === 2" class="card-title">BLOCKED</h5>
+    <a routerLink="/thesis/{{thesis.id}}" class="btn btn-secondary btn-lg">See details</a>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+.wrapper {
+  position: relative;
+  min-height: 100%;
+}
+
+main {
+  padding-bottom: 120px;
+}
+
+footer {
+  display: block;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  line-height: 60px;
+  background-color: #343a40;
+}

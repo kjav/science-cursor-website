@@ -1,0 +1,13 @@
+<h2>Theses</h2>
+<div>
+  <label>Thesis name: <input #thesisName /></label>
+  <button (click)="add(thesisName.value); thesisName.value=''">Add</button>
+</div>
+<ul class="theses">
+  <li *ngFor="let thesis of theses">
+    <a routerLink="/thesis/{{thesis.id}}">
+      <span class="badge">{{thesis.id}}</span> {{thesis.name}}
+    </a>
+    <button class="delete" title="delete thesis" (click)="delete(thesis)">x</button>
+  </li>
+</ul>

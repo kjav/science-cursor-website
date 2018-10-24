@@ -1,0 +1,18 @@
+<button class="btn btn-outline-primary mr-sm-2 my-2 my-sm-0" [ngbPopover]="messagePopover" [popoverTitle]="messagePopoverTitle" placement="bottom">
+  <fa-icon icon="bell"></fa-icon>&nbsp;<span class="badge badge-light">{{messageService.messages.length}}</span>
+</button>
+
+<ng-template #messagePopoverTitle>
+  Messages <button class="btn btn-secondary btn-sm" (click)="messageService.clear()">Clear</button>
+</ng-template>
+
+<ng-template #messagePopover>
+  <div class="message-container">
+    <div *ngIf="messageService.messages.length">
+      <div class="alert alert-primary" role="alert" *ngFor='let message of messageService.messages'>{{message}}</div>
+    </div>
+    <div *ngIf="!messageService.messages.length">
+      <div class="alert alert-warning" role="alert">No message!</div>
+    </div>
+  </div>
+</ng-template>

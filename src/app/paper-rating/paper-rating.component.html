@@ -1,0 +1,18 @@
+<div *ngIf="rating" class="rating mb-3" [ngClass]="{'first': isFirst, 'last': isLast}">
+  <p class="text-muted text-right small"></p>
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <h6 class="mb-0">Credibility rating</h6>
+      <p class="text-muted small mb-0"><em>by {{rating.createdBy | userName | async}} on {{rating.creationDate | date}}</em></p>
+      <app-cursor [cursor]="rating.cursor" [status]="rating.status"></app-cursor>
+    </div>
+    <div class="col-md-8">
+      {{rating.comment}}
+    </div>
+  </div>
+  <p class="text-right">
+    <button type="button" class="btn btn-outline-success" placement="left" ngbTooltip="Vote for this rating">
+      <fa-icon [icon]="['fas', 'thumbs-up']"></fa-icon>&nbsp;<span class="badge badge-secondary">{{rating.votes.length}}</span>
+    </button>
+  </p>
+</div>

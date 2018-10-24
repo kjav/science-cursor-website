@@ -1,0 +1,14 @@
+<section class="text-center">
+  <div class="container">
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <h2>Highlights of the day</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let thesis of theses">
+        <app-thesis-card [thesis]="thesis"></app-thesis-card>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,8 @@
+<form class="search-box my-2 my-lg-0 mx-auto">
+  <input name="searchBox" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+    [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="resultTemplate" placement="bottom-left"
+    (selectItem)="itemSelected($event.item)" [inputFormatter]="titleExtrator" (focus)="model = ''">
+</form>
+<ng-template #resultTemplate let-thesis="result" let-t="term">
+  <ngb-highlight [result]="thesis.title" [term]="t"></ngb-highlight>
+</ng-template>
