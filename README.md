@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Website
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
@@ -25,3 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+=======
+# science-cursor-website
+ScienceCursor.org website
+>>>>>>> 0bff92a2b1095b91d19440548075056199b7dfa9
