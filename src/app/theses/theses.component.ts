@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ThesisModel } from '../models/thesis-model';
 import { ThesisService } from '../services/thesis.service'
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-theses',
@@ -9,25 +10,36 @@ import { ThesisService } from '../services/thesis.service'
 })
 export class ThesesComponent implements OnInit {
   theses: ThesisModel[];
+  private _page: number = 1;
+  pageSize:number = 3;
 
-  constructor(private thesisService: ThesisService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private thesisService: ThesisService) { }
 
   ngOnInit() {
-    this.getTheses();
+    // Allows the automatic switch to another thesis if already looking at another thesis
+    this.route.paramMap.subscribe(params => {
+      const page = params.get('page');
+      if(page != "") this._page = +page;
+      this.updateTheses();
+    });
   }
 
-  getTheses(): void {
-    this.thesisService.getTheses().subscribe(theses => this.theses = theses);
+  updateTheses(): void {
+    this.thesisService.getTheses().subscribe(
+      theses => {
+        let start = (this._page-1)*this.pageSize;
+        let end = start+this.pageSize;
+        this.theses = theses.slice(start, end);
+      });
   }
 
-  add(title: string): void {
-    title = title.trim();
-    if (!title) { return; }
-    this.thesisService.addThesis({ title } as ThesisModel).subscribe(thesis => { this.theses.push(thesis); });
+  @Input()
+  set page(page: number) {
+    this._page = page;
+    this.router.navigate(['theses', this._page]);
   }
 
-  delete(thesis: ThesisModel): void {
-    this.theses = this.theses.filter(h => h !== thesis);
-    this.thesisService.deleteThesis(thesis).subscribe();
+  get page(): number {
+    return this._page;
   }
 }

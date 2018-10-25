@@ -1,13 +1,17 @@
-<h2>Theses</h2>
-<div>
-  <label>Thesis name: <input #thesisName /></label>
-  <button (click)="add(thesisName.value); thesisName.value=''">Add</button>
-</div>
-<ul class="theses">
-  <li *ngFor="let thesis of theses">
-    <a routerLink="/thesis/{{thesis.id}}">
-      <span class="badge">{{thesis.id}}</span> {{thesis.name}}
-    </a>
-    <button class="delete" title="delete thesis" (click)="delete(thesis)">x</button>
-  </li>
-</ul>
+<section class="jumbotron text-center mb-5">
+  <div class="container">
+    <h1 class="jumbotron-heading">Explore theses</h1>
+  </div>
+</section>
+<section class="text-center">
+  <div class="container">
+    <ngb-pagination
+      class="d-flex justify-content-end" [collectionSize]="10" [(pageSize)]="pageSize" [(page)]="page" [boundaryLinks]="true">
+    </ngb-pagination>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let thesis of theses">
+        <app-thesis-card [thesis]="thesis"></app-thesis-card>
+      </div>
+    </div>
+  </div>
+</section>
