@@ -44,6 +44,7 @@ import { PaperComponent } from './paper/paper.component';
 import { ThesisCardComponent } from './thesis-card/thesis-card.component';
 import { HighlightsComponent } from './highlights/highlights.component';
 import { CursorComponent } from './cursor/cursor.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { CursorComponent } from './cursor/cursor.component';
     PaperRatingListComponent,
     PaperRatingComponent,
     PaperComponent,
-    UserNamePipe
+    UserNamePipe,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

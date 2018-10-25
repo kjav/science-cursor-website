@@ -7,8 +7,19 @@
       </button>
 
       <div id="main-menu" class="collapse navbar-collapse justify-content-between" [ngbCollapse]="menuCollapsed">
-        <a class="navbar-brand" href="/home">Science Cursor</a>
-        <app-thesis-search class="flex-fill text-center"></app-thesis-search>
+        <a class="navbar-brand" routerLink="/home">Science Cursor</a>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/home" [class.active]="isActive('/home')">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/theses" [class.active]="isActive('/theses')">Explore</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/about" [class.active]="isActive('/about')">About</a>
+          </li>
+        </ul>
+        <app-thesis-search></app-thesis-search>
         <div>
           <button class="btn btn-primary my-2 my-sm-0 mr-2" type="submit">Sign-up</button>
           <button class="btn btn-secondary my-2 my-sm-0" type="submit">Login</button>

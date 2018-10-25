@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { MessageService } from './services/message.service';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,9 +9,9 @@ import { MessageService } from './services/message.service';
 export class AppComponent {
   menuCollapsed: boolean = true;
 
-  constructor(public messageService: MessageService, private router: Router) { }
+  constructor(private router: Router) { }
 
-  isActivce(path: string): boolean {
+  isActive(path: string): boolean {
     return this.router.isActive(path, false);
   }
 }
