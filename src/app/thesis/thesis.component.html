@@ -1,6 +1,6 @@
 <div *ngIf="thesis">
-  <div class="container my-5">
-    <div class="row">
+  <section class="jumbotron text-center mb-3">
+    <div class="container">
       <div class="col-md-12 text-center mb-3 thesis-title">
         <h1 *ngIf="thesis.status !== 2">{{thesis.title}}</h1>
         <h1 *ngIf="thesis.status === 2">BLOCKED</h1>
@@ -22,31 +22,36 @@
           {{thesis.modComment}}
         </div>
       </div>
-
-      <div class="col-md-6 offset-md-3">
-        <div class="cursor-card card mb-3">
-          <div class="card-body text-center">
-            <h4 class="mb-0">Thesis probabilities</h4>
-            <p class="text-muted small mb-0"><em>Proposed by {{thesis.createdBy | userName | async }} on {{thesis.creationDate | date}}</em></p>
-            <app-cursor [cursor]="thesis.cursor" [status]="thesis.status"></app-cursor>
+    </div>
+  </section>
+  <section>
+    <div class="container mb-5">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="cursor-card card mb-3">
+            <div class="card-body text-center">
+              <h4 class="mb-0">Thesis probabilities</h4>
+              <p class="text-muted small mb-0"><em>Proposed by {{thesis.createdBy | userName | async }} on {{thesis.creationDate | date}}</em></p>
+              <app-cursor [cursor]="thesis.cursor" [status]="thesis.status"></app-cursor>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div *ngIf="thesis.status === 0" class="col-md-12">
-        <ngb-accordion activeIds="validate-section, invalidate-section">
-          <ngb-panel id="validate-section" title="Papers validating the thesis">
-            <ng-template ngbPanelContent>
-              <app-paper-list [papers]="thesis.validating"></app-paper-list>
-            </ng-template>
-          </ngb-panel>
-          <ngb-panel id="invalidate-section" title="Papers discrediting the thesis">
-            <ng-template ngbPanelContent>
-              <app-paper-list [papers]="thesis.invalidating"></app-paper-list>
-            </ng-template>
-          </ngb-panel>
-        </ngb-accordion>
+        <div *ngIf="thesis.status === 0" class="col-md-12">
+          <ngb-accordion activeIds="validate-section, invalidate-section">
+            <ngb-panel id="validate-section" title="Papers validating the thesis">
+              <ng-template ngbPanelContent>
+                <app-paper-list [papers]="thesis.validating"></app-paper-list>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel id="invalidate-section" title="Papers discrediting the thesis">
+              <ng-template ngbPanelContent>
+                <app-paper-list [papers]="thesis.invalidating"></app-paper-list>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </div>
