@@ -7,12 +7,12 @@
   <div class="paper-body" [ngbCollapse]="isCollapsed">
     <div class="col-md-4 offset-md-4 text-center">
       <h6 class="mb-0">Paper credibility</h6>
-      <p class="text-muted small mb-0"><em>Proposed by {{paper.createdBy | userName | async }} on {{paper.creationDate | date}}</em></p>
       <app-cursor [cursor]="paper.cursor" [cursor]="paper.status"></app-cursor>
     </div>
+    <p class="text-muted text-right small mb-2"><em>Proposed by {{paper.createdBy | userName | async }} on {{paper.creationDate | date}}</em></p>
     <p class="small">Authors: <span *ngFor="let author of paper.authors; last as isLast">{{author}}<span *ngIf="!isLast">, </span></span><br>
       Published in {{paper.publishedIn}}</p>
-    <p>{{paper.abstract}}<br>
+    <p class="text-justify">{{paper.abstract}}<br>
       <a href="{{paper.link}}" target="_blank">Read full article <fa-icon [icon]="['fas', 'external-link-alt']" size="xs"></fa-icon></a></p>
     <app-paper-rating *ngFor="let id of paper.ratings; first as isFirst; last as isLast" [ratingId]="id" [isFirst]="isFirst" [isLast]="isLast"></app-paper-rating>
   </div>

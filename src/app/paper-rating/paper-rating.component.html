@@ -3,10 +3,10 @@
   <div class="row">
     <div class="col-md-4 text-center">
       <h6 class="mb-0">Credibility rating</h6>
-      <p class="text-muted small mb-0"><em>by {{rating.createdBy | userName | async}} on {{rating.creationDate | date}}</em></p>
       <app-cursor [cursor]="rating.cursor" [status]="rating.status"></app-cursor>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 text-justify">
+      <p class="text-muted text-right small mb-2"><em>by {{rating.createdBy | userName | async}} on {{rating.creationDate | date}}</em></p>
       {{rating.comment}}
     </div>
   </div>

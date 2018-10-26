@@ -4,6 +4,7 @@
       <div class="col-md-12 text-center mb-3 thesis-title">
         <h1 *ngIf="thesis.status !== 2">{{thesis.title}}</h1>
         <h1 *ngIf="thesis.status === 2">BLOCKED</h1>
+        <p class="text-muted text-right small mb-0"><em>Proposed by {{thesis.createdBy | userName | async }} on {{thesis.creationDate | date}}</em></p>
       </div>
       <div *ngIf="thesis.status === 0" class="col-md-12 text-justify mb-3 thesis-desc">
         <p>{{thesis.desc}}</p>
@@ -31,7 +32,6 @@
           <div class="cursor-card card mb-3">
             <div class="card-body text-center">
               <h4 class="mb-0">Thesis probabilities</h4>
-              <p class="text-muted small mb-0"><em>Proposed by {{thesis.createdBy | userName | async }} on {{thesis.creationDate | date}}</em></p>
               <app-cursor [cursor]="thesis.cursor" [status]="thesis.status"></app-cursor>
             </div>
           </div>
