@@ -1,2 +1,2 @@
-# ScicenceCursor.org
-This repository contains the source code, under MIT, for the ScicenceCursor.org website.
+# ScienceCursor.org
+This repository contains the source code, under MIT, for the ScienceCursor.org website.
